@@ -23,8 +23,9 @@ export class ProfileEditReactiveComponent implements OnInit {
     // Initialize or fetch data if needed
     this.profileService.getProfile().subscribe(res =>{
       if(res){
+        console.log(res);
         this.profileForm.patchValue({
-          name: res.name,
+          name: res[0]?.name,
         })
       }
     })

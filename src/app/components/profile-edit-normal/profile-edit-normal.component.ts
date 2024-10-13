@@ -16,7 +16,7 @@ export class ProfileEditNormalComponent implements OnInit {
   ngOnInit(): void {
     // Fetch profile data and initialize 'profile' object
     this.profileService.getProfile().subscribe(profile => {
-      this.profile = profile;
+      this.profile = profile[0];
     });
   }
 
