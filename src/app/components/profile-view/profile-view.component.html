@@ -1,7 +1,7 @@
 <div class="profile-card max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
     <h2 class="text-2xl font-semibold mb-4 text-center">Profile Details</h2>
     <div class="space-y-4">
-      <p class="flex items-center"><strong class="w-32">Name:</strong> <span> </span></p>
+      <p class="flex items-center"><strong class="w-32">Name:</strong> <span> {{($userProfile | async)?.name}} </span></p>
       <p class="flex items-center"><strong class="w-32">Email:</strong> <span>john.doe</span></p>
       <p class="flex items-center"><strong class="w-32">Phone:</strong> <span>123-456-7890</span></p>
       <p class="flex items-center"><strong class="w-32">Address:</strong> <span>123 Main St, Anytown, USA</span></p>

@@ -11,5 +11,5 @@
   <label for="address">Address:</label>
   <input type="text" id="address" formControlName="address">
 
-  <button type="submit" [disabled]="profileForm.invalid">Save</button>
+  <button type="submit" [disabled]="!profileForm.valid">Save</button>
 </form>

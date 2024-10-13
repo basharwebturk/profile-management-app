@@ -12,21 +12,33 @@ export class ProfileEditReactiveComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private profileService: ProfileService) {
     this.profileForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern('^\\d{10}$')]],
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
       address: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
     // Initialize or fetch data if needed
+    this.profileService.getProfile().subscribe(res =>{
+      if(res){
+        this.profileForm.patchValue({
+          name: res.name,
+        })
+      }
+    })
   }
 
   onSubmit() {
     if (this.profileForm.valid) {
-      // Handle form submission
-      console.log('Form data:', this.profileForm.value);
+      this.profileService.updateProfile(this.profileForm.getRawValue()).subscribe(res =>{
+        // Handle successful update
+        console.log('Profile updated successfully.');
+      }, error => {
+        // Handle error
+        console.error('Error updating profile:', error);
+      })
     }
   }
 }

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProfileService } from '../../services/profile.service';
+import { UserProfile } from '../../modal/user-profile-modal';
+import { Observable } from 'rxjs';
 
 
 
@@ -8,14 +10,7 @@ import { ProfileService } from '../../services/profile.service';
   templateUrl: './profile-view.component.html',
   styleUrls: ['./profile-view.component.css']
 })
-export class ProfileViewComponent implements OnInit {
-  profile: any = {};
-
+export class ProfileViewComponent {
+  $userProfile: Observable<UserProfile> = this.profileService.getProfile();
   constructor(private profileService: ProfileService) { }
-
-  ngOnInit() {
-    this.profileService.getProfile().subscribe(profile => {
-      this.profile = profile;
-    });
-  }
 }

@@ -15,5 +15,5 @@
     <label for="address">Address</label>
     <input id="address" name="address" [(ngModel)]="profile.address" required>
   </div>
-  <button type="submit" [disabled]="profileForm.invalid">Save</button>
+  <button type="submit" [disabled]="!profileForm.valid">Save</button>
 </form>
